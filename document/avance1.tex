@@ -1,0 +1,95 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black}
+
+\titleformat{\section}{\normalsize\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titlespacing{\section}{0pt}{8pt}{4pt}
+\titlespacing{\subsection}{0pt}{6pt}{2pt}
+
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\textit{Avance 1 — Proyecto de Clase | Cálculo de Varias Variables, UIS 2026}}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+	
+	\twocolumn[{
+		\begin{@twocolumnfalse}
+			
+			\begin{center}
+				{\small UNIVERSIDAD INDUSTRIAL DE SANTANDER $\cdot$ INGENIERÍA EN CIENCIA DE DATOS}\\
+				{\small Cálculo de Funciones en Varias Variables $\cdot$ Prof. Iván Saavedra $\cdot$ 2026}
+				
+				\vspace{0.6cm}
+				
+				{\LARGE\bfseries Análisis Geométrico del Espacio Latente\\[0.2cm]
+					para la Detección de Imágenes Falsas}
+				
+				\vspace{0.5cm}
+				
+				{\normalsize
+					Jhon Sebastian Arciniegas González,\quad
+					Ricardo Alfonso Celis Sandoval,\\[0.1cm]
+					Johnn David Martínez Rodríguez,\quad
+					Johan Sebastian Zurincho Muñoz
+				}
+				
+				\vspace{0.5cm}
+			\end{center}
+			
+			\begin{abstract}
+				Este documento presenta el Avance 1 del proyecto de clase de Cálculo de Funciones en Varias Variables. La idea central es mostrar cómo los temas del curso derivadas parciales, gradiente y curvatura aparecen de forma natural en un problema real y actual como los deepfakes. Explicamos qué es un deepfake desde el punto de vista ingenieríl (ciencia de datos), por qué falla cuando ignora la geometría del espacio en el que opera, y cómo esa geometría puede usarse tanto para detectarlos como para proteger datos biométricos. La fuente principal es un artículo de investigación de CVPR 2021 de Li et al., que estudia exactamente este problema sobre modelos de inteligencia artificial generativa.
+			\end{abstract}
+			
+			\vspace{0.4cm}
+			\hrule
+			\vspace{0.5cm}
+			
+		\end{@twocolumnfalse}
+	}]
+	
+	\section{¿De qué trata el proyecto?}
+	
+	Un deepfake es una imagen o video falso generado por inteligencia artificial, donde el rostro de una persona es reemplazado o modificado de forma convincente. Aunque el resultado parece realista, detrás de su generación hay un proceso matemático que, cuando se hace mal, deja errores que se pueden detectar.
+	
+	Nuestro proyecto parte de una pregunta simple: \textit{¿por qué algunos deepfakes se ven mal?} La respuesta tiene que ver con geometría. Los modelos de IA que generan rostros trabajan en un espacio matemático de alta dimensión llamado espacio latente. Dentro de ese espacio, los rostros reales no están distribuidos al azar: están concentrados sobre una superficie curva llamada variedad (manifold). Cuando el modelo intenta crear una transición entre dos rostros tomando el camino más corto en línea recta, ese camino sale de la superficie y el resultado es un rostro con artefactos, bordes borrosos o texturas raras y poco realistas.
+	
+	Aquí es donde entra toma relevancia el cálculo al entender la forma de esa superficie, cómo se curva, cuál es el camino correcto sobre ella, y cómo perturbarla para proteger la identidad de una persona, son problemas que se resuelven con derivadas parciales, gradiente y curvatura de Gauss.
+	
+	\section{Aplicación en nuestra carrera}
+	
+	En ingeniería en ciencia de datos, trabajamos constantemente con datos de alta dimensión, como imágenes, señales biométricas, embeddings de texto, etc. Saber que estos datos viven sobre superficies curvas y no en espacios planos cambia completamente cómo los procesamos, los comparamos y los protegemos.
+	
+	Este proyecto nos permite ver que el cálculo multivariable no es solo teoría, es la base matemática de cómo funcionan los modelos de IA modernos. El gradiente que calculamos en clase es el mismo que usa una red neuronal para aprender. La curvatura que medimos sobre una función es la misma que distingue un rostro real de uno sintético.
+	
+	\section{Fuente principal}
+	
+	\textbf{Li, D., Wang, W., Fan, H., \& Dong, J. (2021).}\\
+	\textit{Exploring Adversarial Fake Images on Face Manifold.}\\
+	IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 5789--5798.
+	
+	Este artículo estudia cómo generar imágenes falsas que engañen a los detectores de deepfakes, buscando puntos adversariales sobre el manifold de StyleGAN mediante descenso de gradiente en el espacio latente. Los autores logran reducir la precisión de detectores de vanguardia de más del 90\% a menos del 1\%, sin que las imágenes luzcan alteradas visualmente. Es una fuente directa y actualizada que conecta el cálculo con inteligencia artificial aplicada.
+	
+	\vspace{0.3cm}
+	\hrule
+	\vspace{0.2cm}
+	{\small \textit{Avance 1 — Proyecto de Clase. Cálculo de Funciones en Varias Variables. UIS, 2026.}}
+	
+\end{document}
